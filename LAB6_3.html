@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 6.2</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <link rel="stylesheet" href="prova.css">
+        <script>
+            "use strict";
+            function create_menu(numero_pezzi ,numero_menu, oggetto_vendita){
+                //let men = document.getElementById("menu1");
+                var tavola = "<div>Inserire la quantit&agrave; di "+oggetto_vendita+" che si vuole acquistare: <select id=\"menu"+numero_menu+"\">";
+                for(let i=0; i<=numero_pezzi; i++){
+                    tavola += "<option label="+i+" value="+i+"></option>";
+                }
+                //men.appendChild(document.body.innerHTML(opt));
+                tavola += "</select> </div>";
+                return tavola;
+                
+            }
+            function cancel(m1, m2, m3){
+                document.getElementById(m1).option.label = "0";
+                document.getElementById(m1).option.value = 0;
+                document.getElementById(m2).option.label = "0";
+                document.getElementById(m2).option.value = 0;
+                document.getElementById(m3).option.label = "0";
+                document.getElementById(m3).option.value = 0;
+            }
+        </script>
+        </head>
+        <body>
+            <script>
+                        "use strict";
+                        let tavola = create_menu(10,1,"memoria SD 8GB");
+                        tavola += create_menu(10,2, "chiavetta USB 8GB");
+                        tavola += create_menu(10,3, "DVD-R");
+                        document.body.innerHTML = tavola;
+            </script>
+            <input type="button" value="azzera" id="clear" onclick="cancel('menu1', 'menu2', 'menu3')">
+        </body>
+</html>

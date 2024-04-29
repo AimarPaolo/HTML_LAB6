@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 6.2</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <link rel="stylesheet" href="prova.css">
+        <script>
+            "use strict";
+            function validateForm(){
+                let formObj = document.prova;
+                // inserisco il nome del form, in questo caso prova
+                if(formObj.nome.value == ""){
+                    alert("NON hai inserito nessun nome");
+                    return false;
+                }
+                else if(formObj.cognome.value == ""){
+                    alert("non hai inserito nessun cognome");
+                    return false;
+                    // si devono inserire tanti if per differenziare tutti i diversi casi, così che l'utente possa sostituire e risolvere
+                    // i problemi
+                }
+                return true;
+            }
+            function somma(n1, n2, ss){
+                let num1 = document.getElementById(n1).value; 
+                let num2 = document.getElementById(n2).value;
+                if(isNaN(parseInt(num1)) || isNaN(parseInt(num2))){
+                    return;
+                }
+                document.getElementById(ss).value = (parseInt(num1)+parseInt(num2));  
+               /* let n1 = s.num1.value;
+                let n2 = s.num2.value;
+                print(n1, n2)
+                ss.somma_calcolata.value = (n1+n2);*/
+            }
+        </script>
+    </head>
+    <body>
+        <div>inserire il primo numero: <input type="number" id="num1" pattern="\d+" onchange="somma('num1', 'num2', 'somma_calcolata')"></div>
+            <div>inserire il secondo numero: <input type="number" id="num2" pattern="\d+" onchange="somma('num1', 'num2', 'somma_calcolata')"></div>
+            <div>la loro somma vale: <input type="text" id="somma_calcolata" readonly="true"> </div>
+    </body>
+</html>
