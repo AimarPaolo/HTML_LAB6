@@ -18,24 +18,34 @@
                 return tavola;
                 
             }
-            function cancel(m1, m2, m3){
-                document.getElementById(m1).option.label = "0";
-                document.getElementById(m1).option.value = 0;
-                document.getElementById(m2).option.label = "0";
-                document.getElementById(m2).option.value = 0;
-                document.getElementById(m3).option.label = "0";
-                document.getElementById(m3).option.value = 0;
+            function costo(m1, m2, m3, t1){
+            let men1 = parseInt(document.getElementById(m1).value);
+            let men2 = parseInt(document.getElementById(m1).value);
+            let men3 = parseInt(document.getElementById(m1).value);
+            document.getElementById(t1).value = (15.5*men1+18*men2+2*men3);
+            }
+            function cancel(m1, m2, m3, f1){
+                document.getElementById(m1).label = "0";
+                document.getElementById(m1).value = 0;
+                document.getElementById(m2).label = "0";
+                document.getElementById(m2).value = 0;
+                document.getElementById(m3).label = "0";
+                document.getElementById(m3).value = 0;
+                f1.text_costo.value = "";
             }
         </script>
         </head>
-        <body>
+        <body> 
             <script>
-                        "use strict";
-                        let tavola = create_menu(10,1,"memoria SD 8GB");
-                        tavola += create_menu(10,2, "chiavetta USB 8GB");
-                        tavola += create_menu(10,3, "DVD-R");
-                        document.body.innerHTML = tavola;
+                "use strict";
+                let tavola = "<form action=\"login.php\" id=\"form_menu\" method=\"get\">"+create_menu(10,1,"memoria SD 8GB");
+                tavola += create_menu(10,2, "chiavetta USB 8GB");
+                tavola += create_menu(10,3, "DVD-R");
+                tavola += "<input type=\"text\" readonly=\"true\" id=\"text_costo\">";
+                tavola += "<input type=\"button\" value=\"calcola il costo\" id=\"calcola_costo\" onclick=\"costo('menu1', 'menu2', 'menu3','text_costo')\">";
+                tavola += "<input type=\"button\" value=\"azzera\" id=\"clear\" onclick=\"cancel('menu1', 'menu2', 'menu3',form_menu)\"> </form>";
+                // per inserire un form non utilizzo gli apici '' altrimenti non lo riconosce. 
+                document.body.innerHTML = tavola;
             </script>
-            <input type="button" value="azzera" id="clear" onclick="cancel('menu1', 'menu2', 'menu3')">
         </body>
 </html>
