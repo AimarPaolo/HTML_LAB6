@@ -1,27 +1,27 @@
 "use strict";
 
-function calcola_operazione(t1, t2, btn, ris) {
+function calcola_operazione(f1) {
     let numRegex = /^(?:[1-9]|[1-9][0-9])$/;
-    let text1 = parseInt(t1);
-    let text2 = parseInt(t2);
+    let text1 = parseInt(f1.text_1.value);
+    let text2 = parseInt(f1.text_2.value);
     let risultato = "";
 
     if (numRegex.test(text1) && numRegex.test(text2)) {
-        if (btn === "somma") {
+        if (f1.btn.value === "somma") {
             risultato = text1 + text2;
-        } else if (btn === "sottrazione") {
+        } else if (f1.btn.value === "sottrazione") {
             risultato = text1 - text2;
-        } else if (btn === "prodotto") {
+        } else if (f1.btn.value === "prodotto") {
             risultato = text1 * text2;
-        } else if (btn === "divisione") {
+        } else if (f1.btn.value === "divisione") {
             if (text2 !== 0) {
                 risultato = text1 / text2;
-            } /* else {
+            }/* else {
                 risultato = "Impossibile dividere per zero";
             }*/
         }
     } else {
-        risultato = "Inserire solo numeri da 1 a 99";
+        risultato = "Inserire solo numeri da 1 a 99!!!!!";
     }
-    ris.value = risultato;
+    f1.risultato.innerText = risultato
 }
