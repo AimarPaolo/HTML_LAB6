@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 6.5</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <script type="application/javascript" src="LAB6_5.js"></script>
+    </head>
+    <body>
+        <h1>Selezionare il pulsante per decidere quale operazione fare</h1>
+        <form id="form1" method="get" action="#">
+            <p>
+                <input type="text" id="text_1" placeholder="inserire il primo numero" step="0.01">
+            </p>
+            <p>
+                <input type="text" id="text_2" placeholder="inserire il secondo numero" step="0.01">
+            </p>
+            <p>
+                <input type="radio" name="btn" value="somma" checked>+
+                <!--utilizzo il comando checked per avere già una soluzione selezionata-->
+                <input type="radio" name="btn" value="sottrazione">-
+                <input type="radio" name="btn" value="prodotto">*
+                <input type="radio" name="btn" value="divisione">/
+            </p>
+            <p>
+                <input type="button" value="calcola" id="calcola" onclick="calcola_operazione(form1.text_1.value, form1.text_2.value, form1.btn.value , form1.ris)">
+                <!--IN QUESTO CASO BISOGNA FARE ATTENZIONE AI VALORI CHE VENGONO PASSATI, ES. NON FUNZIONA SE METTO FORM1.RIS.VALUE-->
+                <input type="reset" value="reset">
+            </p>
+            <p id="risultato">
+                Risultato:
+                <input type="text" id="ris" readonly="true">
+            </p>
+        </form>
+    </body>
+</html>
