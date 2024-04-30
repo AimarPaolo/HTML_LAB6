@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 6.4</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <link rel="stylesheet" href="prova.css">
+        <script>
+            "use strict";
+      function cambiaTestoEColore(testo, spazio, colore, f) {
+        document.getElementById(spazio).innerHTML=testo;
+        document.getElementById(spazio).style.cssText="color:"+colore+";";
+        if(colore=='black'){
+        f.textArea.value="testo di prova (sostituiscilo a piacere)";
+        }
+        return false;
+      }
+        </script>
+    </head>
+    <body>
+        <h1>Testo inserito</h1>
+        <p id="spazioPerTesto" style="color:black;">Nessun testo inserito.</p>
+        <form name="mioForm" onSubmit="return cambiaTestoEColore(document.mioForm.textArea.value, 'spazioPerTesto', 'red',mioForm);" onReset="return cambiaTestoEColore('Nessun testo inserito.','spazioPerTesto','black', mioForm);" action="#">
+            <div>
+                <p>Inserire il testo da colorare di rosso</p>
+                <textarea id="textArea" name="testoDaInserire" rows="4" cols="50">testo di prova (sostituiscilo a piacere)</textarea>
+                <input type="submit" id="sub">
+                <input type="reset" id="res">
+            </div>
+        </form>
+        
+    </body>
+</html>
