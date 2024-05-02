@@ -1,6 +1,6 @@
 function validateTemperature(f1){
     const for1 = document.getElementById(f1)
-    var regexp = /(\+|-)\d{0,3}\.\d/;
+    var regexp = /^(\+|-)\d{0,3}\.\d$/;
     let temperature = for1.testo.value
     if(regexp.test(temperature)){
         window.alert("la temperatura inserita è corretta e vale: "+temperature)
