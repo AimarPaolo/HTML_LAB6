@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 6.9</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <script type="application/javascript" src="LAB6_9.js"></script>
+    </head>
+    <body>
+        <form id="form1" action="#">
+            <ul>
+               <li>
+                  <label for="nome">nome (al pi&ugrave; 10 caratteri, di cui il primo maiuscolo ed i restanti minuscoli):</label>
+                  <input type="text" id="nome" value="" size="10" maxlength="10">
+               </li>
+               <li>
+                  <label for="eta">et&agrave; (numero intero compreso tra 0 e 199):</label>
+                  <input type="text" id="eta" value="" size="10">
+               </li>
+               <li>
+                  <label for="telefono">telefono (costituito da un prefisso di due o tre cifre, di cui la prima sia zero, seguito dal carattere '-' e quindi da un numero di sei o sette cifre che pu&ograve; opzionalmente contenere un altro carattere '-' dopo le prime tre cifre):</label>
+                  <input type="text" id="telefono" value="" size="10">
+               </li>
+            </ul>
+            <p><input type="reset" value="Cancella"> <input type="button" value="Verifica" onclick="validateUsername('form1')"></p>
+          </form>
+    </body>
+</html>
