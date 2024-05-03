@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 6.10</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <script>
+            "use strict";
+            function ottieniGiorno(n) {
+                switch (n) {
+                    case 0:
+                    return "Domenica"
+                    break;
+                    case 1:
+                    return "Lunedì";
+                    break;
+                    case 2:
+                    return "Martedì";
+                    break;
+                    case 3:
+                    return "Mercoledì";
+                    break;
+                    case 4:
+                    return "Giovedì";
+                    break;
+                    case 5:
+                    return "Venerdì";
+                    break;
+                    case 6:
+                    return "Sabato";
+                    break;
+                }
+            }
+            function modifyInterface(f){
+                const giorni_mese = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+                const f1 = document.getElementById(f);
+                let date = f1.data.value;
+                var regexpData = /(^(((0[1-9]|1[0-9]|2[0-8])[-](0[1-9]|1[012]))|((29|30|31)[-](0[13578]|1[02]))|((29|30)[-](0[4,6,9]|11)))[-](19|[2-9][0-9])\d\d$)|(^29[-]02[-](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)/;
+                //let regex_data = /^\d{1,2}\-\d{1,2}\-\d{4}$/;
+                if(regexpData.test(date)){
+                //faccio prima il controllo che sia corretto l'inserimento della data per evitare di salvare ulteriori variabili 
+                //inutilmente.
+                let regexp_giorno = /^(0?[1-9]|[12][0-9]|3[01])$/;
+                let regexp_mese = /^(0?[1-9]|1[012])$/;
+                //let regexp_anno = /^\d{4}$/
+                //non necessario testare questo perchè non avrebbe superato già il test precedente
+                let day = parseInt(date.split("-")[0]);
+                let month = parseInt(date.split("-")[1])-1;
+                let year = parseInt(date.split("-")[2]);
+                const dateObj = new Date(year, month, day);
+                if(!regexp_giorno.test(day)){
+                    window.alert("Errore nell'inserimento del giorno");
+                }else if(!regexp_mese.test(month)){
+                    window.alert("Errore nell'inserimento del mese");
+                }else{
+                    let risultato = "<ul>";
+                    risultato += "<li>il giorno inserito è: "+ottieniGiorno(dateObj.getDay())+"</li>";
+                    risultato += "<li>il mese inserito è: "+giorni_mese[parseInt(dateObj.getMonth())]+"</li>";
+                    risultato += "<li>l'anno inserito è: "+dateObj.getFullYear()+"</li></ul>";
+                    f1.risultato.innerHTML = risultato; 
+                }
+
+                }else{
+                    window.alert("Errore nell'inserimento della data!!");
+                }
+
+            }
+        </script>
+    </head>
+    <body>
+        <form action="#" id="form1">
+            <p>Inserire la data da visualizzare: <input type="text" id="data" onchange="modifyInterface('form1')" placeholder="inserisci qui la data nel formato (dd-mm-yyyy)" required></p>
+            <p>
+
+            <input type="reset" id="cancella">
+            </p>
+            <p>
+            <output id="risultato">
+                Risultato: 
+            </output>
+            </p>
+        </form>
+    </body>
+</html>
